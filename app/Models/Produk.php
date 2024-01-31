@@ -9,4 +9,16 @@ class Produk extends Model
 {
     use HasFactory;
     protected $table='produk';
+
+    protected $fillable = [
+        'nama',
+        'gambar',
+        'link',
+    ];
+
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'produk_id');
+    }
 }
