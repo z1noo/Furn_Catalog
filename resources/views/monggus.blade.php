@@ -1,44 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
+@extends('layouts.app')
 
-    </head>
-    <body>
+@section('content')
         <!-- resources/views/index.blade.php -->
 
 @foreach ($produks as $produk)
 <div class="produk">
     <h2>{{ $produk->nama }}</h2>
     <p>Jumlah Like: <span class="jumlah-like">{{ $produk->likes_count }}</span></p>
-    <button class="btn-like" data-produk-id="{{ $produk->id }}">Like</button>
+    <button class="btn-like">Like</button>
     <!-- Tampilkan informasi produk lainnya -->
 </div>
 
 @endforeach
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('.btn-like').on('click', function () {
-            var produkId = $(this).data('produk-id');
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
+    $(document).ready(function() {
+        $('.btn-like').(function(e) {
+            e.preventDefault(); // Prevent the button from submitting the form
+    
+            // Get the ID of the product that was clicked
+            var productId = $(this).closest('.produk').data('id');
+    
+            // Send an AJAX request to the server to add a like to the product
             $.ajax({
-                type: 'POST',
-                url: '/like/' + produkId,
-                data: {
-                    _token: csrfToken
-                },
-                dataType: 'json',
-                success: function (data) {
-                    if (data.success) {
-                        var jumlahLikeElement = $('.jumlah-like[data-produk-id="' + produkId + '"]');
-                        jumlahLikeElement.text(data.jumlah_like);
-                    }
+                url: '/products/' + productId + '/like',
+                method: 'POST',
+                success: function(data) {
+                    // Update the number of likes on the page
+                    var likesCount = $(this).closest('.produk').find('.jumlah-like');
+                    likesCount.text(data.likesCount);
                 }
             });
         });
     });
-</script>
-    </body>
-</html>
+    </script>
+
+@endsection
