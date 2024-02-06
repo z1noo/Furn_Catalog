@@ -12,16 +12,23 @@ class LikeController extends Controller
 {
     public function like(Request $request, $produkId)
     {
-        // Anda bisa menambahkan validasi atau logika lainnya di sini
-
+        $existingLike = Like::where('produk_id', $produkId)
+                            ->where('user_id', auth()->id())
+                            ->first();
+    
+        if ($existingLike) {
+            return response()->json(['success' => false, 'message' => 'User already liked the product']);
+        }
+    
+        // Continue with the creation of a new like record
         $like = new Like();
         $like->produk_id = $produkId;
-        // Juga, set user_id sesuai dengan pengguna yang melakukan like
-        $like->user_id = auth()->id(); // Menggunakan Auth untuk mendapatkan ID pengguna yang sedang login
+        $like->user_id = auth()->id();
         $like->save();
-
+    
         $jumlahLike = Like::where('produk_id', $produkId)->count();
-
+    
         return response()->json(['success' => true, 'jumlah_like' => $jumlahLike]);
     }
+    
 }
