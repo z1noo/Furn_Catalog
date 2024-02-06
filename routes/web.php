@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/homo', [IndexController::class,'index']);
-Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like');
+Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

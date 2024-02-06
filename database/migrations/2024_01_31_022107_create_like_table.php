@@ -13,7 +13,7 @@ class CreateLikeTable extends Migration
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('produk_id')->references('id')->on('produk');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

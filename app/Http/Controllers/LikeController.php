@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Like;
 use App\Models\Produk;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
