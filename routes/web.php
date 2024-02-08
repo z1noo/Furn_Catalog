@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -20,8 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homo', [IndexController::class,'index']);
+Route::get('/home', [IndexController::class,'index']);
 Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
+Route::post('home/upload', [ProdukController::class,'store'])->name('produk.store');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

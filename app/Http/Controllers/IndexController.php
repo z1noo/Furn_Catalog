@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Like;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -25,31 +26,6 @@ class IndexController extends Controller
     public function create()
     {
         //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
-            'link' => ['required', 'string', 'max:255'],
-        ]);
-
-        $produks = new Produk();
-
-        if (!auth()->check()) {
-            // Redirect the user to the form page with a flash message and JavaScript alert
-            session()->flash('error', 'You must be logged in to create a siswa.');
-            return redirect()->back()->with('unauthorized', 'You must be logged in to create a siswa.');
-        }
-
-        $produks->nama = $request->input('nama');
-        $produks->link = $request->input('link');
-        $produks->save();
-
-        return redirect('/homo')->with('success', 'Siswa berhasil ditambahkan!');
     }
 
     /**
