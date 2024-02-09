@@ -17,7 +17,12 @@ class LikeController extends Controller
                             ->first();
     
         if ($existingLike) {
-            return response()->json(['success' => false, 'message' => 'User already liked the product']);
+            // User has already liked the product, so "unlike" it
+            $existingLike->delete();
+
+            $jumlahLike = Like::where('produk_id', $produkId)->count();
+            
+            return response()->json(['success' => true, 'action' => 'unlike', 'jumlah_like' => $jumlahLike]);
         }
     
         // Continue with the creation of a new like record
@@ -29,6 +34,15 @@ class LikeController extends Controller
         $jumlahLike = Like::where('produk_id', $produkId)->count();
     
         return response()->json(['success' => true, 'jumlah_like' => $jumlahLike]);
+    }
+
+    public function hasUserLikedProduct(Request $request, $id)
+    {
+        $like = Like::where('user_id', $request->user()->id)
+                ->where('produk_id', $id)
+                ->first();
+
+        return response()->json(['liked' => $like !== null]);
     }
     
 }
