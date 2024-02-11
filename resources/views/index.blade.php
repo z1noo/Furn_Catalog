@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Furn</title>
+    @vite('resources/css/app.css')
 </head>
 <body>
     <div class="container">
@@ -114,7 +114,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function openModal(title, imagePath) {
             document.getElementById('modalTitle').innerHTML = title;
@@ -126,6 +125,6 @@
         }
     </script>
 
-    <script src="script.js"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
