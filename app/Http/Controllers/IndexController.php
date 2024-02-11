@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Like;
+use App\Models\Komen;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,7 +16,7 @@ class IndexController extends Controller
     public function index()
     {
         // Mengambil semua produk beserta jumlah like
-        $produks = Produk::withCount('likes')->get();
+        $produks = Produk::withCount('likes')->with('comments')->get();
 
         return view('monggus', compact('produks'));
     }
@@ -23,14 +25,6 @@ class IndexController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
     {
         //
     }

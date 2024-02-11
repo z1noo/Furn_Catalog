@@ -114,6 +114,7 @@
             </div>
         </div>
     </div>
+
     <script>
         function openModal(title, imagePath) {
             document.getElementById('modalTitle').innerHTML = title;

@@ -14,7 +14,7 @@ class CreateCommentTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('komentar');
             $table->foreign('produk_id')->references('id')->on('produk');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

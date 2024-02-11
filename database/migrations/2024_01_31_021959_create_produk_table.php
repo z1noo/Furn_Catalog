@@ -16,9 +16,21 @@ class CreateProdukTable extends Migration
             $table->timestamps();
         });
     }
-
     public function down()
     {
+        // Drop foreign key constraints if they exist
+        Schema::table('like', function (Blueprint $table) {
+            $table->dropForeign(['produk_id']);
+        });
+    
+        Schema::table('comment', function (Blueprint $table) {
+            $table->dropForeign(['produk_id']);
+        });
+    
+        // Now drop the produk table
         Schema::dropIfExists('produk');
     }
+    
+    
+    
 }
