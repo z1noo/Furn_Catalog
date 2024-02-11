@@ -22,7 +22,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('like', function (Blueprint $table) {
-            //
+            // Drop the unique constraint
+            $table->dropUnique(['produk_id', 'user_id']);
         });
     }
+    
 };

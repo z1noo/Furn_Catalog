@@ -26,4 +26,10 @@ class Produk extends Model
     {
         return $this->likes()->where('user_id', $userId)->exists();
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Komen::class, 'produk_id');
+    }
+
 }
