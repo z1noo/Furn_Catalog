@@ -113,6 +113,33 @@
                 </div>
             </div>
         </div>
+        <footer id="contact">
+            <div class="contact-container">
+                <h1>.Fur<span class="yellowText">n</span>iture</h1>
+                <div class="contact">
+                    <div class="stalk link-contact">
+                        <h3>STALK US</h3>
+                        <ul>
+                            <li><a data-value="Instagram" href="">Instagram</a></li>
+                            <li><a data-value="Facebook" href="">Facebook</a></li>
+                            <li><a data-value="Linkedin" href="">Linkedin</a></li>
+                        </ul>
+                    </div>
+                    <div class="mail link-contact">
+                        <h3>CALL US</h3>
+                        <ul>
+                            <li><a data-value="johnDoe@Gmail.com" href="">johnDoe@Gmail.com</a></li>
+                            <li><a data-value="+881-129-2999" href="">+881-129-2999</a></li>
+                            <li><a data-value="+881-129-2109" href="">+881-129-2109</a></li>
+                        </ul>
+                    </div>
+                    <div class="location link-contact">
+                        <h3>FIND US</h3>
+                        <p>SMKN 2 Bandung, Ciliwung st, 04</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
