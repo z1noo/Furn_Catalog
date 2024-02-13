@@ -103,6 +103,106 @@ li {
     position: relative;
     transition: 0.2s;
 }
+.banner{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.banner marquee{
+    font-size: 128px;
+    font-weight: 700;
+    transform: rotate(-4deg);
+    height: fit-content;
+}
+
+.slider{
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+    animation: floatUpDown 2s infinite;
+}
+.slides input{
+    display: none;
+}
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+.slide img{
+    width: 100%;
+    height: 500px;
+}
+
+.navigation-manual{
+    position: absolute;
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+.manual-btn{
+    border: 2px solid rgb(159, 159, 159);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:hover{
+    background-color: rgb(97, 97, 97);
+}
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+.navigation-auto{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 460px;
+}
+.navigation-auto div{
+    border: 2px solid rgb(159, 159, 159);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background-color: grey;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background-color: grey;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background-color: grey;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background-color: grey;
+}
 /* .banner{
     height: 100vh;
     width: 100%;
@@ -434,51 +534,139 @@ li {
 .bxs-heart{
     color: red;
 }
+footer{
+    margin-top: 28px;
+    background-color: var(--black-color);
+    color: white;
+    padding: 20px 0;
+}
+.contact-container{
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-container h1{
+    margin-bottom: auto;
+}
+.contact-container .contact{
+    margin-top: 8px;
+    display: flex;
+    flex: 1 1 calc(50% - 20px);
+    flex-shrink: 0;
+    width: 100%;
+    justify-content: flex-end;
+}
+.link-contact{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+.link-contact ul li a{
+    color: white;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes floatUpDown {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
 }
+
 @keyframes RightToLeft {
     from {
-        transform: translateX(0%) ;
+        transform: translateX(0%);
     }
+
     to {
-        transform: translateX(50%) ;
+        transform: translateX(50%);
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .menu-link{
+    .menu-link {
         display: none;
     }
-    .menu-action{
+
+    .menu-action {
         max-width: 100%;
     }
-    .banner{
+
+    .banner {
         display: none;
     }
-    .comment-section h2{
+
+    .comment-section h2 {
         font-weight: 600;
         font-size: 16px;
         text-align: left;
         margin-bottom: 10px;
     }
-    .modal-content{
+
+    .modal-content {
         flex-direction: column;
-        max-width: calc(100% - 20px); /* Adjust according to your padding */
+        max-width: calc(100% - 20px);
+        /* Adjust according to your padding */
     }
-    .photo-section{
+
+    .photo-section {
         flex-direction: column-reverse;
     }
-    .comment-bubble{
+
+    .comment-bubble {
         margin-bottom: 10px;
     }
-    
+    .contact-container{
+        flex-direction: column;
+    }
+    .contact-container .contact{
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .link-contact ul{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .link-contact ul{
+        text-align: center;
+    } 
+
 }
+
 @media screen and (max-width: 767px) {
     .card {
         flex: 1 1 calc(50% - 20px);
