@@ -21,6 +21,11 @@ class IndexController extends Controller
         return view('monggus', compact('produks'));
     }
 
+    public function home()
+    {
+        return view( 'home' );
+    }
+
     /**
      * Show the form for creating a new resource.
      */

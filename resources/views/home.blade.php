@@ -26,48 +26,7 @@
             </nav>
         </form>
         <div class="main">
-            <!-- <div class="banner">
-                <div class="scrollText">
-                    <div class="scroll">
-                        <div class="RightToLeft">
-                            <p>Lorem ipsum dolor sit <span class="yellowText"> consectetur</span> amet</p>
-                            <p>Lorem ipsum dolor sit amet consectetur</p>
-                        </div>
-                        </div>
-                </div>
-                <div class="slider">
-                    <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio1">
-                        <input type="radio" name="radio-btn" id="radio2">
-                        <input type="radio" name="radio-btn" id="radio3">
-                        <input type="radio" name="radio-btn" id="radio4">
-                        <div class="slide first">
-                            <img src="images/Image - 1.png" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="images/Image - 2.png" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="images/Image - 3.png" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="images/Image - 4 .png"alt="" srcset="">
-                        </div>
-                        <div class="navigation-auto">
-                            <div class="auto-btn1"></div>
-                            <div class="auto-btn2"></div>
-                            <div class="auto-btn3"></div>
-                            <div class="auto-btn4"></div>
-                        </div>
-                    </div>
-                    <div class="navigation-manual">
-                        <label for="radio1" class="manual-btn"></label>
-                        <label for="radio2" class="manual-btn"></label>
-                        <label for="radio3" class="manual-btn"></label>
-                        <label for="radio4" class="manual-btn"></label>
-                    </div>
-                </div>
-            </div> -->
+          
             <div class="banner">
                 <marquee behavior="" direction="">Lorem ipsum <span class="yellowText">dolor</span> sit, amet <span class="yellowText">consectetur</span>adipisicing elit.</marquee>
                 <marquee behavior="" direction="right">Lorem ipsum <span class="yellowText">dolor</span> sit, amet <span class="yellowText">consectetur</span>adipisicing elit.</marquee>
@@ -189,6 +148,6 @@
         }
     </script>
 
-    <script src="script.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

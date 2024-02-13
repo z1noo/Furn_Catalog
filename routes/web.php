@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [IndexController::class,'index']);
+Route::get('home', [IndexController::class,'home']);
 Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
 Route::post('/like/{id}/has-liked', [LikeController::class,'hasUserLikedProduct'])->name('like.has-liked');
 Route::post('/produk/{produk_id}/komentar', [CommentController::class, 'store'])->name('comment.store');
