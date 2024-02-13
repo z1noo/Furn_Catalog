@@ -78,16 +78,16 @@
                         <input type="radio" name="radio-btn" id="radio3">
                         <input type="radio" name="radio-btn" id="radio4">
                         <div class="slide first">
-                            <img src="images/wlwl.png" alt="">
+                            <img src="{{ asset('image/wlwl.png') }}" alt="">
                         </div>
                         <div class="slide">
-                            <img src="images/image2.png" alt="">
+                            <img src="{{ asset('image/image2.png') }}" alt="">
                         </div>
                         <div class="slide">
-                            <img src="images/image3.png" alt="">
+                            <img src="{{ asset('image/image3.png') }}" alt="">
                         </div>
                         <div class="slide">
-                            <img src="images/image4.png" alt="" srcset="">
+                            <img src="{{ asset('image/image4.png') }}" alt="" srcset="">
                         </div>
                         <div class="navigation-auto">
                             <div class="auto-btn1"></div>
@@ -105,8 +105,8 @@
                 </div>
             </div>
             <div class="card-container">
-                <div class="card" onclick="openModal('Modal 1', 'path/to/images/image1.png')"> 
-                    <img src="images/image1.png" alt="" width="fit-content"> 
+                <div class="card" onclick="openModal('Modal 1', '{{ asset('image/image1.png') }}')"> 
+                    <img src="{{ asset('image/wlwl.png') }}" alt="" width="fit-content"> 
                     <h2>Card 1</h2>
                     <div class="like">
                         <i class='bx bxs-heart'></i>
@@ -118,7 +118,7 @@
             <div class="modal" id="modal">
                 <div class="modal-content">
                     <div class="photo-section">
-                        <img src="images/image1.png" alt="" width="fit-content">
+                        <img src="{{ asset('image/image1.png') }}" alt="" width="fit-content">
                         <h2 id="modalTitle"></h2>
                     </div>
                     <div class="actions">
