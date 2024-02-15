@@ -24,4 +24,8 @@ Route::post('/like/{id}/has-liked', [LikeController::class,'hasUserLikedProduct'
 Route::post('/produk/{produk_id}/komentar', [CommentController::class, 'store'])->name('comment.store');
 
 Route::post('/upload', [ProdukController::class,'store'])->name('produk.store');
-Auth::routes();
+
+
+Auth::routes(['verify' => true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+

@@ -39,6 +39,16 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'hash' => false,
+            'verify' => true,
+            'middleware' => [
+                'web',
+                \Illuminate\Auth\Middleware\Authenticate::class,
+                \Illuminate\Auth\Middleware\Authorize::class,
+                \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+                \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class, // Add this line
+            ],
         ],
     ],
 
