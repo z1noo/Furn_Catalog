@@ -24,5 +24,7 @@ Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.stor
 Route::post('/like/{id}/has-liked', [LikeController::class,'hasUserLikedProduct'])->name('like.has-liked');
 Route::post('/produk/{produk_id}/komentar', [CommentController::class, 'store'])->name('comment.store');
 
+Route::post('produk/create',[ProdukController::class,'store'])->name('product.store');
+
 Route::post('/upload', [ProdukController::class,'store'])->name('produk.store');
 Auth::routes();
