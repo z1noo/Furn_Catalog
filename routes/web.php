@@ -27,4 +27,8 @@ Route::post('/produk/{produk_id}/komentar', [CommentController::class, 'store'])
 Route::post('produk/create',[ProdukController::class,'store'])->name('product.store');
 
 Route::post('/upload', [ProdukController::class,'store'])->name('produk.store');
-Auth::routes();
+
+
+Auth::routes(['verify' => true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+
