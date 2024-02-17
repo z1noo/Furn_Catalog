@@ -7,6 +7,12 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -22,6 +28,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    use VerifiesEmails;
 
     /**
      * Where to redirect users after registration.
@@ -59,13 +66,19 @@ class RegisterController extends Controller
     
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'user', // Set the role to 'user' by default
+            'role' => 'user',
             'jenis_kelamin' => $data['jenis_kelamin'],
             'no_telp' => $data['no_telp'],
+            'email_verified_at' => null, // Mark the user as unverified
         ]);
+    
+        event(new Registered($user));
+    
+        return $user;
     }
+    
 }
