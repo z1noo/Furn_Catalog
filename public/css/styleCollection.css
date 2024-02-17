@@ -1,0 +1,17 @@
+.container{
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    padding-top: 20px;
+}
+li{
+    list-style: none;
+    width: fit-content;
+    color: black;
+    cursor: pointer;
+}
+li a{
+    padding: 2px 8px;
+    text-decoration: none;
+    
+}

@@ -1,32 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-:root{
+
+:root {
     --yellow-color: #ffb73b;
     --black-color: #111111;
     --gray-color: #bbbbbb;
-    }
-*{
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
-body{
-     overflow-x: hidden;
-     position: relative;
+    scroll-behavior: smooth;
 }
 
-nav{
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 20px 20px 0 40px;
 }
-.menu-link{
+
+.menu-link {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.menu-action{
+
+.menu-action {
     display: flex;
     height: fit-content;
     width: 100%;
@@ -34,34 +40,41 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
-.search{
+
+.search {
     border: none;
     outline: none;
     border-bottom: 1px solid black;
-    font-size:14px;
+    font-size: 14px;
     padding: 2px;
     width: 200px;
 }
-.title-icon{
-    font-weight: 800 ;
+
+.title-icon {
+    font-weight: 800;
     font-size: 24px;
 }
-span.yellowText{
+
+span.yellowText {
     color: var(--yellow-color);
 }
-.menu-action a i{
+
+.menu-action a i {
     font-size: 20px;
     color: var(--black-color);
 }
-ul{
+
+ul {
     list-style: none;
 }
-ul li{
+
+ul li {
     width: fit-content;
     padding-right: 8px;
     margin-top: 4px;
 }
-ul li a{ 
+
+ul li a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -71,10 +84,12 @@ ul li a{
     font-weight: 500;
     transform: 1s;
 }
-ul li a:hover{
+
+ul li a:hover {
     color: white;
 }
-li::before {  
+
+li::before {
     transform: scaleX(0);
     transform-origin: bottom right;
 }
@@ -92,7 +107,10 @@ li::before {
     content: " ";
     display: block;
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     inset: 0 0 0 0;
     background: var(--black-color);
     z-index: -1;
@@ -333,25 +351,53 @@ li {
 #radio4:checked ~ .navigation-auto .auto-btn4{
     background-color: lightgray;
 } */
+.hero-sub{
+    display: flex;
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-radius: 24px;
+    
+}
+.hero-sub span.check{
+    background-color: var(--yellow-color);
+    border-radius: 20px 20px 0px 0px;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+.hero-sub p{
+    background-color: white;
+    padding: 20px;
+    padding-right: 100px;
+    border-radius: 0px 0px 24px 0px;
+    font-weight: 500;
+    font-size: 20px;
+}
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
     max-width: 1140px;
-    height:fit-content;
+    height: fit-content;
     max-height: fit-content;
     margin: auto;
     background-color: var(--yellow-color);
     padding: 20px;
-    border-radius: 24px;
+    border-radius: 24px 0px 24px 24px;
 }
+
 .card {
     flex: 1 1 calc(25% - 20px);
     max-width: calc(25% - 20px);
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8px ;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     display: flex;
@@ -371,6 +417,7 @@ li {
     object-fit: cover;
     border-radius: 8px;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -394,7 +441,7 @@ li {
     display: flex;
     max-width: 800px;
     position: relative;
-    
+
 }
 
 .modal.active {
@@ -404,12 +451,14 @@ li {
 .modal.active .modal-content {
     opacity: 1;
 }
-.actions{
+
+.actions {
     display: flex;
     flex-direction: column;
 
 }
-.actions button.close{
+
+.actions button.close {
     display: flex;
     position: absolute;
     right: 20px;
@@ -438,13 +487,15 @@ li {
 .comment-section {
     flex: 1;
     gap: 10px;
-    
-    
+
+
 }
-.comment-section h2{
+
+.comment-section h2 {
     text-align: center;
 }
-.comment{
+
+.comment {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -452,7 +503,8 @@ li {
     max-height: 320px;
     overflow: auto;
 }
-.comment-bubble{
+
+.comment-bubble {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -460,22 +512,26 @@ li {
     padding: 5px 10px;
     border-radius: 0px 10px 10px 10px;
 }
-.comment-bubble h1{
+
+.comment-bubble h1 {
     font-size: 13px;
     font-weight: 600;
-    
+
 }
-.comment-bubble p{
-    font-size:12px;
-    
+
+.comment-bubble p {
+    font-size: 12px;
+
 }
-.buttons{
+
+.buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
+
 }
-.buttons input{
+
+.buttons input {
     outline: none;
     border: none;
     border-bottom: 1px solid black;
@@ -484,14 +540,16 @@ li {
     width: 100%;
     max-width: 260px;
 }
-.input-comment{
+
+.input-comment {
     display: flex;
     gap: 10px;
 }
-.input-comment button{
+
+.input-comment button {
     width: 100%;
     max-width: fit-content;
-    padding:5px 10px;
+    padding: 5px 10px;
     background-color: rgb(244, 194, 43);
     cursor: pointer;
     border: none;
@@ -503,6 +561,7 @@ li {
     align-items: center;
 
 }
+
 .action-buttons {
     display: flex;
     gap: 5px;
@@ -518,7 +577,8 @@ li {
     color: #fff;
     cursor: pointer;
 }
-.action-buttons button:last-child{
+
+.action-buttons button:last-child {
     font-size: 28px;
     color: red;
     display: flex;
@@ -531,7 +591,8 @@ li {
     border: none;
     cursor: pointer;
 }
-.bxs-heart{
+
+.bxs-heart {
     color: red;
 }
 footer{
@@ -570,27 +631,21 @@ footer{
 }
 
 
+::-webkit-scrollbar {
+    width: 12px; 
+}
 
+::-webkit-scrollbar-track {
+    background: transparent ; 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+::-webkit-scrollbar-thumb {
+    background: var(--yellow-color); 
+    border-radius: 6px; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a8751c   ; 
+}
 @keyframes floatUpDown {
 
     0%,
