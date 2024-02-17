@@ -41,14 +41,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function authenticated(Request $request, $user)
-    {
-        if (!$user->hasVerifiedEmail()) {
-            auth()->logout(); // Logout the user
-            return redirect()->route('verification.notice')->with('warning', 'Before proceeding, please verify your email.');
-        }
-
-        return redirect()->intended($this->redirectPath());
-    }
 
 }

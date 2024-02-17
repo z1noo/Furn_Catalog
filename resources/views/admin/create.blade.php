@@ -10,7 +10,7 @@
         <input type="text" name="nama" id="nama" required>
 
         <label for="gambar">Product Image:</label>
-        <input type="file" name="gambar" id="gambar" required>
+        <input type="file" accept="image/*" name="gambar" id="gambar" required>
 
         <label for="link">Product Link:</label>
         <input type="text" name="link" id="link" required>

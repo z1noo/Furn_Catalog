@@ -18,7 +18,7 @@ class IndexController extends Controller
         // Mengambil semua produk beserta jumlah like
         $produks = Produk::withCount('likes')->with('comments')->get();
 
-        return view('monggus', compact('produks'));
+        return view('home', compact('produks'));
     }
 
     public function home()
