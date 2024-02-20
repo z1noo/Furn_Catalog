@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container-w-screen h-screen">
             <div class="min-h-screen m-0 flex ">
                     <img src="{{ asset ('image/BackgroundLogin.jpg') }}" class="w-fit h-screen object-cover ">  
                 <div class="w-screen h-screen">
                     <div class="ml-40 mt-10  mr-18 h-fit ">
                         <span class="text-twell">Hi there! Wellcome back</span>
                         <h2 class="text-h2lr mb-8 ">{{ __('Login') }}</h2>
-                        <!-- <span class="title-icon">.Fur<span class="text-[#FFC93E]">niture</span></span> -->
-                    <form method="POST" action="{{ route('login') }}">
+                        
+                    <form class="w-[450px] h-[400px]" method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="flex-col text-uspas">
@@ -50,17 +51,17 @@
                                 </div>
                                 <div class="flex-1">
                                         @if (Route::has('password.request'))
-                                                <a class="" href="{{ route('password.request') }}">
+                                                <a class="underline" href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password ?') }}
                                                 </a>
                                         @endif
                                     </div>  
                             </div>
-                            <div class="flex-col mt-16 mb-2 text-acc">
+                            <div class="flex-col mt-12 text-acc">
                                 <span class="">Don't have an account ? <a class="no-underline text-[#FFC93E] " href="register">Create here</a></span>
                             </div>
                             
-                                <div class="flex-col text-butlog mb-8">
+                                <div class="flex-col text-butlog ">
                                     <button type="submit" class="butlog bg-[#FFC93E] rounded-[12px] w-[120px] h-[36px]">
                                         {{ __('Login') }}
                                     </button>
@@ -72,5 +73,5 @@
                     </div>    
                 </div>    
             </div>
-
+        </div>
 @endsection
