@@ -1,7 +1,19 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/styleApp.css') }}" rel="stylesheet">
 
-@section('content')
-<div class="container-w-screen h-screen">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite('resources/css/app.css')
+    <title>Login</title>
+</head>
+<body>
+    <main>
+    <div class="container-w-screen h-screen">
             <div class="min-h-screen m-0 flex ">
                     <img src="{{ asset ('image/BackgroundLogin.jpg') }}" class="w-fit h-screen object-cover ">  
                 <div class="w-screen h-screen">
@@ -74,4 +86,9 @@
                 </div>    
             </div>
         </div>
-@endsection
+    </main>
+</body>
+</html>
+
+
+
