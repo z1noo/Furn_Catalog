@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <title>Furn</title>
@@ -68,19 +69,19 @@
 
                 @foreach($produks as $produk)
                 <div class="card" onclick="openModal('modal-{{ $produk->id }}', '{{ $produk->nama }}', '{{ asset('image/image1.png') }}')">
-                    <img src="{{ asset('image/wlwl.png') }}" alt="" width="fit-content"> 
+                    <img src="{{ asset('storage/images/' . $produk->gambar) }}" alt="" width="fit-content"> 
                     <h2>{{ $produk->nama }}</h2>
                     <div class="like">
                         <i class='bx bxs-heart'></i>
-                        <span>{{ $produk->likes_count }}</span>
+                        <span class="jumlah-like" data-produk-id="{{ $produk->id }}">{{ $produk->likes_count }}</span>
                     </div>
                 </div>
 
                 <div class="modal" id="modal-{{ $produk->id }}">
                     <div class="modal-content">
                         <div class="photo-section">
-                            <img src="{{ asset('image/image1.png') }}" alt="" width="fit-content">
-                            <h2 id="modalTitle"></h2>
+                            <img src="{{ asset('storage/images/' . $produk->gambar) }}" alt="" width="fit-content">
+                            <h2 id="modalTitle">{{ $produk->nama }}</h2>
                         </div>
                         <div class="actions">
                             <button class="close" onclick="closeModal('modal-{{ $produk->id }}')"><i class='bx bx-x'></i></button>
@@ -101,8 +102,17 @@
                                     <button type="submit"><i class='bx bx-paper-plane'></i></button>
                                 </div>
                                 <div class="action-buttons">
-                                    <button>Go to Link</button>
-                                    <button href=""><i class='bx bx-heart'></i></button>
+                                    <button href="{{ $produk->link }}">Go to Link</button>
+                                    @php
+                                    // Check if the user has already liked the product
+                                        $userLiked = $produk->likedBy(auth()->id());
+                                    @endphp
+                                
+                                    @if($userLiked)
+                                        <button class="btn-unlike" data-produk-id="{{ $produk->id }}">Unlike</button>
+                                    @else
+                                       <button class="btn-like" data-produk-id="{{ $produk->id }}"><i class='bx bx-heart'></i></button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -140,17 +150,9 @@
         </footer>
     </div>
 
-    <script>
-    function openModal(modalId, title, imagePath) {
-        document.getElementById(modalId).classList.add('active');
-        document.getElementById('modalTitle').innerHTML = title;
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).classList.remove('active');
-    }
-    </script>
 
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @extends('layouts.ajax')
 </body>
 </html>

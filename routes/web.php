@@ -20,8 +20,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [IndexController::class,'index']);
-Route::get('home', [IndexController::class,'home']);
+Route::get('/', [IndexController::class,'index'])->name('index');
+Route::get('/home', [IndexController::class,'index']);
+
+Route::get('/homo', [IndexController::class,'home']);
 
 Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
 Route::post('/like/{id}/has-liked', [LikeController::class,'hasUserLikedProduct'])->name('like.has-liked');
@@ -34,5 +36,5 @@ Route::get('/admin/user-list', [AdminController::class, 'userList'])->name('admi
 Route::get('/admin/create',[AdminController::class,'create'])->name('admin.create');
 
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 

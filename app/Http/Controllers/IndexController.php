@@ -23,7 +23,8 @@ class IndexController extends Controller
 
     public function home()
     {
-        return view( 'home' );
+        $produks = Produk::withCount('likes')->with('comments')->get();
+        return view( 'monggus', compact('produks') );
     }
 
     /**

@@ -12,58 +12,50 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
         <nav class="">
             <div class="container">
-                <a class="" href="{{ url('/home') }}">
-                    {{ config('home', 'Home') }}
+                <a class="" href="{{ route('index') }}">
+                    Home
                 </a>
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="">
-                                    <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                <div class="">
+                    <a href="#" id="user-menu-toggle"><i class='bx bx-user'></i></a>
+                </div>
+                <div class="user-menu {{-- use a CSS class to hide this block initially --}}" id="user-menu">
+                    @guest
+                        @if (Route::has('login'))
+                            <a class="user-menu-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="">
-                                    <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="">
-                                <a id="" class="" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="">
-                                    <a class="" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                        @if (Route::has('register'))
+                            <a class="user-menu-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                    @else
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        <a class="user-menu-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    @endguest
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
+
+    <!-- Add JavaScript to toggle the user menu -->
+    <script>
+        document.getElementById('user-menu-toggle').addEventListener('click', function() {
+            document.getElementById('user-menu').classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
