@@ -24,9 +24,9 @@ $('.btn-like, .btn-unlike').on('click', function () {
 
                 // Toggle between "Like" and "Unlike" buttons
                 if (action === 'like') {
-                    button.removeClass('btn-like').addClass('btn-unlike').text('Unlike');
+                    button.removeClass('btn-like').addClass('btn-unlike').html('<i class=\'bx bxs-heart\'></i>');
                 } else {
-                    button.removeClass('btn-unlike').addClass('btn-like').text('Like');
+                    button.removeClass('btn-unlike').addClass('btn-like').html('<i class=\'bx bx-heart\'></i>');
                 }
             }
         }
@@ -65,6 +65,10 @@ $('.add-comment-form').on('submit', function(event) {
 
 
 });
+    
+document.getElementById('user-menu-toggle').addEventListener('click', function() {
+        document.getElementById('user-menu-container').classList.toggle('d-none');
+    });
 
 function openModal(modalId, title, imagePath) {
         document.getElementById(modalId).classList.add('active');

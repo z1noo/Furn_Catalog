@@ -13,26 +13,30 @@ class LikeController extends Controller
     public function like(Request $request, $produkId)
     {
         $existingLike = Like::where('produk_id', $produkId)
-                            ->where('user_id', auth()->id())
-                            ->first();
-    
+                                ->where('user_id', auth()->id())
+                                ->first();
+
         if ($existingLike) {
             // User has already liked the product, so "unlike" it
             $existingLike->delete();
 
             $jumlahLike = Like::where('produk_id', $produkId)->count();
-            
+
             return response()->json(['success' => true, 'action' => 'unlike', 'jumlah_like' => $jumlahLike]);
         }
-    
+
+        // Get the next available id
+        $nextId = Like::getNextId();
+
         // Continue with the creation of a new like record
         $like = new Like();
+        $like->id = $nextId;
         $like->produk_id = $produkId;
         $like->user_id = auth()->id();
         $like->save();
-    
+
         $jumlahLike = Like::where('produk_id', $produkId)->count();
-    
+
         return response()->json(['success' => true, 'jumlah_like' => $jumlahLike]);
     }
 

@@ -16,7 +16,7 @@ class ProdukController extends Controller
         // Validate the incoming request data
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480', // Maximum 2MB
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif', // Maximum 2MB
             'link' => 'required|url|max:255',
         ]);
 
@@ -43,7 +43,7 @@ class ProdukController extends Controller
         $product->save();
 
         // Redirect the user back with a success message
-        return redirect()->route('produk.index')->with('success', 'Product created successfully!');
+        return redirect()->route('index')->with('success', 'Product created successfully!');
     }
 
     public function update(Request $request, Produk $produk)
@@ -51,7 +51,7 @@ class ProdukController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'link' => ['required', 'string', 'max:255'],
-            'gambar' => ['nullable', 'image', 'max:2048'], // Add validation for image uploads
+            'gambar' => ['nullable', 'image', 'max:20480'], // Add validation for image uploads
         ]);
 
         if (!auth()->check()) {

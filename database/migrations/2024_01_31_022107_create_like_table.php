@@ -9,7 +9,7 @@ class CreateLikeTable extends Migration
     public function up()
     {
         Schema::create('like', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('produk_id')->references('id')->on('produk');

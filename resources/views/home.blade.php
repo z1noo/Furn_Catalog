@@ -10,22 +10,20 @@
 </head>
 <body>
     <div class="container">
-        <form action="">
             <nav>
                 <div class="menu-link">
                     <input class="search" type="search" name="" id="" placeholder="Explore Here">
                     <ul>
                         <li><a href="" data-value="> About Us">> About Us</a></li>
-                        <li><a href="" data-value="> Collection">> Collection</a></li>
+                        <li><a href="{{ route('collection') }}" data-value="> Collection">> Collection</a></li>
                         <li><a href="" data-value="> Contact">> Contact</a></li>
                     </ul>
                 </div>
                 <div class="menu-action">
                     <span class="title-icon">.Fur<span class="yellowText">n</span></span>
-                    <a href=""><i class='bx bx-user'></i></a>
+                    @include('userMenu')
                 </div>
             </nav>
-        </form>
         <div class="main">
           
             <div class="banner">
@@ -98,8 +96,11 @@
                             </div>
                             <div class="buttons">
                                 <div class="input-comment">
-                                    <input type="text" name="" id="" placeholder="comment here dude">
-                                    <button type="submit"><i class='bx bx-paper-plane'></i></button>
+                                    <form class="add-comment-form" data-produk-id="{{ $produk->id }}">
+                                        @csrf
+                                        <textarea name="komentar" id="komentar" required placeholder="comment here dude"></textarea>
+                                        <button type="submit" class="btn-add-comment" data-produk-id="{{ $produk->id }}"><i class='bx bx-paper-plane'></i></button>
+                                    </form>
                                 </div>
                                 <div class="action-buttons">
                                     <button href="{{ $produk->link }}">Go to Link</button>
@@ -109,7 +110,7 @@
                                     @endphp
                                 
                                     @if($userLiked)
-                                        <button class="btn-unlike" data-produk-id="{{ $produk->id }}">Unlike</button>
+                                        <button class="btn-unlike" data-produk-id="{{ $produk->id }}"><i class='bx bxs-heart' ></i></button>
                                     @else
                                        <button class="btn-like" data-produk-id="{{ $produk->id }}"><i class='bx bx-heart'></i></button>
                                     @endif
@@ -150,9 +151,9 @@
         </footer>
     </div>
 
-
+    </div>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @extends('layouts.ajax')
+    @include('ajax')
 </body>
 </html>

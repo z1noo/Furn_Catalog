@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [IndexController::class,'index'])->name('index');
+Route::get('/collection',[IndexController::class,'collection'])->name('collection');
 Route::get('/home', [IndexController::class,'index']);
 
 Route::get('/homo', [IndexController::class,'home']);
