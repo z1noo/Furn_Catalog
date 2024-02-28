@@ -28,6 +28,10 @@ export default {
         lineHeight: '1.875rem;',
         fontWeight: '500',
       }],
+      'creedt': ['2.5rem;', {
+        lineHeight: '4.5rem;',
+        fontWeight: '500',
+      }],
     },
   },
   plugins: [],
