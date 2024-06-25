@@ -8,37 +8,43 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ProdukController extends Controller
 {
+
     public function store(Request $request)
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif', // Maximum 2MB
+            'gambar' => 'required|image', // Maximum 2MB
             'link' => 'required|url|max:255',
         ]);
 
         // Handle the file upload and compression
-        $image = $request->file('gambar');
-        $gambarName = $image->getClientOriginalName();
+        $manager = new ImageManager(Driver::class);
+        $imagePath = $request->file('gambar')->getRealPath();
+        $gambar = $request->file('gambar');
+        $image = $manager->read($imagePath);
+        $imageName = $request->file('gambar')->getClientOriginalName();
 
         // Compress image if it's larger than 2MB
-        if ($image->getSize() > 2048000) {
-            $compressedImage = Image::make($image)->resize(800, null, function ($constraint) {
+        if ($gambar->getSize() > 2048) {
+            $image->resize(null, 500, function ($constraint) {
                 $constraint->aspectRatio();
-            })->encode('jpg', 75); // Change quality as needed
-            $gambarName = 'compressed_' . $gambarName;
-            $compressedImage->save(public_path('storage/images/' . $gambarName));
+                $constraint->upsize(); // Make sure the original image doesn't get smaller
+            });
+            $image->save('storage/images/' . $imageName);
         } else {
-            $image->storeAs('public/images', $gambarName);
+            $image->save('
+            storage/images/'. $imageName);
         }
 
         // Create a new product instance
         $product = new Produk();
         $product->nama = $validatedData['nama'];
-        $product->gambar = $gambarName;
+        $product->gambar = $imageName;
         $product->link = $validatedData['link'];
         $product->save();
 
@@ -68,11 +74,11 @@ class ProdukController extends Controller
             $size = $image->getSize(); // in bytes
             $maxSize = 2048 * 1024; // 2MB in bytes
 
-            if ($size > $maxSize) {
-            // Compress the image
-                $compressedImage = Image::make($image)->encode('jpg', 75); // Adjust compression quality as needed
-                $compressedImage->save(); // Overwrite the original image with the compressed version
-            }
+            // if ($size > $maxSize) {
+            // // Compress the image
+            //     $compressedImage = ImageManager::make($image)->encode('jpg', 75); // Adjust compression quality as needed
+            //     $compressedImage->save(); // Overwrite the original image with the compressed version
+            // }
 
         // Delete the existing image
             if ($produk->gambar && file_exists(storage_path('app/public/produk/' . $produk->gambar))) {

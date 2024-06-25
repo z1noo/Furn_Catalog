@@ -22,13 +22,13 @@
     <div id="app">
         <nav class="">
             <div class="container">
-                <a class="" href="{{ route('index') }}">
+                {{-- <a class="" href="{{ route('index') }}">
                     Home
-                </a>
+                </a> --}}
                 <div class="">
-                    <a href="#" id="user-menu-toggle"><i class='bx bx-user'></i></a>
+                    <a href="{{ route('user.profile') }}" id="user-menu-toggle"><i class='bx bx-user'></i></a>
                 </div>
-                <div class="user-menu {{-- use a CSS class to hide this block initially --}}" id="user-menu">
+                {{-- <div class="user-menu" id="user-menu">
                     @guest
                         @if (Route::has('login'))
                             <a class="user-menu-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -43,7 +43,7 @@
                         </form>
                         <a class="user-menu-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     @endguest
-                </div>
+                </div> --}}
             </div>
         </nav>
 

@@ -28,6 +28,12 @@ class IndexController extends Controller
         return view( 'monggus', compact('produks') );
     }
 
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('userMenu', compact('user'));
+    }
+
     public function collection()
     {
         // Get the currently authenticated user

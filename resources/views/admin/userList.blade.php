@@ -23,8 +23,8 @@
                     <td>{{ $user->jenis_kelamin }}</td>
                     <td>{{ $user->no_telp }}</td>
                     <td>
-                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('admin.userEdit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{{ route('admin.userDestroy', $user->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>

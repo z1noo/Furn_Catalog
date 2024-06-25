@@ -21,7 +21,7 @@
                 </div>
                 <div class="menu-action">
                     <span class="title-icon">.Fur<span class="yellowText">n</span></span>
-                    @include('userMenu')
+                    @include('layouts/app')
                 </div>
             </nav>
         <div class="main">

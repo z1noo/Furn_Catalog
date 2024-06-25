@@ -13,7 +13,7 @@ class CreateCommentTable extends Migration
             $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('user_id');
             $table->text('komentar');
-            $table->foreign('produk_id')->references('id')->on('produk');
+            $table->foreign('produk_id')->references('id')->on('produk')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

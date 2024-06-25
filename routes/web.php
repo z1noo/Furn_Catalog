@@ -25,16 +25,25 @@ Route::get('/collection',[IndexController::class,'collection'])->name('collectio
 Route::get('/home', [IndexController::class,'index']);
 
 Route::get('/homo', [IndexController::class,'home']);
-
-Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', [IndexController::class,'profile'])->name('user.profile');
+    Route::post('/like/{produkId}', [LikeController::class,'like'])->name('like.store');
 Route::post('/like/{id}/has-liked', [LikeController::class,'hasUserLikedProduct'])->name('like.has-liked');
 Route::post('/produk/{produk_id}/komentar', [CommentController::class, 'store'])->name('comment.store');
+});
+
+
 
 Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
 Route::post('/produk/create', [ProdukController::class,'store'])->name('produk.store');
 
-Route::get('/admin/user-list', [AdminController::class, 'userList'])->name('admin.userList');
-Route::get('/admin/create',[AdminController::class,'create'])->name('admin.create');
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin/user-list', [AdminController::class, 'userList'])->name('admin.userList');
+    Route::get('/admin/create',[AdminController::class,'create'])->name('admin.create');
+    Route::get('/admin/edit/{produk}', [AdminController::class,'edit'])->name('admin.edit');
+    Route::get('/admin/user-edit', [AdminController::class, 'userList'])->name('admin.userEdit');
+    Route::get('/admin/user-destroy', [AdminController::class, 'userList'])->name('admin.userDestroy');
+});
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');

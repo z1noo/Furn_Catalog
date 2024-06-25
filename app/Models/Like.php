@@ -14,7 +14,7 @@ class Like extends Model
 
     public function produk()
     {
-        return $this->belongsTo(Produk::class, 'produk_id');
+        return $this->belongsTo(Produk::class, 'produk_id')->cascadeOnDelete();;
     }
 
     public static function create(array $attributes = [])

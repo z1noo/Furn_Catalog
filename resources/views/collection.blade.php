@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <li data-value=">Back"><a data-value=">Back" href="{{ route('index') }}" class="turnBack"> >Back </a></li>
+        <li data-value=">Back"><a data-value=">Back" href="{{ route('user.profile') }}" class="turnBack"> >Back </a></li>
         <h1>Your Collections</h1>
         <div class="card-container">
             @foreach($likedProducts as $produk)

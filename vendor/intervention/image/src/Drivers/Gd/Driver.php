@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Intervention\Image\Drivers\Gd;
 
 use Intervention\Image\Drivers\AbstractDriver;
+use Intervention\Image\Exceptions\DriverException;
 use Intervention\Image\Exceptions\RuntimeException;
 use Intervention\Image\Image;
 use Intervention\Image\Interfaces\ColorInterface;
 use Intervention\Image\Interfaces\ColorProcessorInterface;
 use Intervention\Image\Interfaces\ColorspaceInterface;
 use Intervention\Image\Interfaces\DriverInterface;
+use Intervention\Image\Interfaces\FontProcessorInterface;
 use Intervention\Image\Interfaces\ImageInterface;
 
 class Driver extends AbstractDriver
@@ -34,7 +36,7 @@ class Driver extends AbstractDriver
     public function checkHealth(): void
     {
         if (!extension_loaded('gd') || !function_exists('gd_info')) {
-            throw new RuntimeException(
+            throw new DriverException(
                 'GD PHP extension must be installed to use this driver.'
             );
         }
@@ -78,6 +80,9 @@ class Driver extends AbstractDriver
             ) {
             }
 
+            /**
+             * @throws RuntimeException
+             */
             public function add($source, float $delay = 1): self
             {
                 $this->core->add(
@@ -87,6 +92,9 @@ class Driver extends AbstractDriver
                 return $this;
             }
 
+            /**
+             * @throws RuntimeException
+             */
             public function __invoke(): ImageInterface
             {
                 return new Image(
@@ -119,5 +127,15 @@ class Driver extends AbstractDriver
     public function colorProcessor(ColorspaceInterface $colorspace): ColorProcessorInterface
     {
         return new ColorProcessor($colorspace);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see DriverInterface::fontProcessor()
+     */
+    public function fontProcessor(): FontProcessorInterface
+    {
+        return new FontProcessor();
     }
 }
